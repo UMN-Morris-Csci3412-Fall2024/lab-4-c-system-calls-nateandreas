@@ -13,12 +13,12 @@ if [ ! -d "$1" ]; then
 fi
 
 # Count directories (excluding the base directory itself)
-num_dirs=$(find "$1" -type d | wc -l)
+num_dirs=$(find "$1" -mindepth 1 -type d | wc -l)
 # Count regular files
 num_regular=$(find "$1" -type f | wc -l)
 
 # Output the results with exact phrasing and formatting
-echo "There were $((num_dirs - 1)) directories."
+echo "There were $num_dirs directories."
 echo "There were $num_regular regular files."
 
 # Ensure a successful exit status
