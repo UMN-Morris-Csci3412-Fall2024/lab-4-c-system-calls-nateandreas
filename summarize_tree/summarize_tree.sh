@@ -6,11 +6,20 @@ if [ "$#" -ne 1 ]; then
   exit 1
 fi
 
+# Ensure the directory exists
+if [ ! -d "$1" ]; then
+  echo "Error: Directory $1 does not exist."
+  exit 1
+fi
+
 # Count directories (excluding the base directory itself)
 num_dirs=$(find "$1" -type d | wc -l)
 # Count regular files
 num_regular=$(find "$1" -type f | wc -l)
 
-# Output the results
-echo "There were $((num_dirs - 1)) directories." # Subtract 1 to exclude the base directory itself
-echo "There were $num_regular regular files." # output the number of regular files
+# Output the results with exact phrasing and formatting
+echo "There were $((num_dirs - 1)) directories."
+echo "There were $num_regular regular files."
+
+# Ensure a successful exit status
+exit 0
