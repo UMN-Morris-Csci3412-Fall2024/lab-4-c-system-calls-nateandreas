@@ -21,5 +21,8 @@ num_regular=$(find "$1" -type f | wc -l)
 echo "There were $num_dirs directories."
 echo "There were $num_regular regular files."
 
+# Debugging output
+echo "Debug: num_dirs=$num_dirs, num_regular=$num_regular"
+
 # Ensure a successful exit status
 exit 0
